@@ -10,15 +10,28 @@ var usersRouter = require('./routes/users');
 
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
-  type Query {
-    hello: String
+ type Query {
+    quoteOfTheDay: String
+    random: Float!
+    rollXDices(numberOfRolls: Int!): [Int]
   }
 `);
 
 // The root provides a resolver function for each API endpoint
 var root = {
-    hello: () => {
-        return 'Hello world!';
+    quoteOfTheDay: () => {
+        return Math.random() < 0.5 ? 'Take it easy' : 'Salvation lies within';
+    },
+    random: () => {
+        return Math.random();
+    },
+    rollXDices: ({ numberOfRolls }) => {
+        const roll = () => 1 + Math.floor(Math.random() * 6);
+        const rolls = [];
+        for (i = 0; i < numberOfRolls; i++) {
+            rolls.push(roll());
+        }
+        return rolls;
     },
 };
 
