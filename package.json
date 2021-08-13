@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "start:dev": "DEBUG=express:* node ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -11,6 +12,9 @@
     "express": "~4.16.1",
     "express-graphql": "^0.12.0",
     "graphql": "^15.5.1",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "query-string": "^7.0.1",
+    "socket.io": "^4.1.3",
+    "ws": "^8.1.0"
   }
 }
